@@ -7,12 +7,6 @@ monte_carlo
 
 A Python package for analyzing and sampling Ising model.
 
-This repository is currently under development. To do a development install, download this repository and t ype
-
-`pip install -e .`
-
-in the repository directory.
-
 ### Copyright
 
 Copyright (c) 2022, Fei_Zhuang
