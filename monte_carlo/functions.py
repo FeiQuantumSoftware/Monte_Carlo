@@ -39,8 +39,7 @@ if __name__ == "__main__":
 
 
 # def spin configuration class
-class SpinConfig():
-
+class SpinConfig:
     def __init__(self, N_length=10):
         """Create a class of 1-d Ising model, with length of the spinlist as N_length.
 
@@ -51,7 +50,7 @@ class SpinConfig():
         Returns
         -------
             SpinConfig : class
-        A class of spinlist with length N_length. The total possible spin configurations number is iMax = 2**N_length.
+        A class of spinlist with N_length. The total possible spin configurations: iMax = 2 ** N_length.
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -71,7 +70,7 @@ class SpinConfig():
         Parameters
         ----------
         decimal_Input : integar
-            The decimal value of a binary list. 
+            The decimal value of a binary list.
         Returns
         -------
         self.spinlist : list
@@ -89,7 +88,8 @@ class SpinConfig():
             self.spinlist = binary_list
         else:
             raise ValueError(
-                f"input decimal ({decimal_input}) should not exceed the possible biggest spinconfig 2**N= {self.iMax}. ")
+                f"input decimal ({decimal_input}) should not exceed the biggest possible number 2**N= {self.iMax}. "
+            )
 
         return self.spinlist
 
@@ -108,7 +108,7 @@ class SpinConfig():
         >>> myspin.init_rand_spinlist()
         [0, 1, 1, 0, 1, 0, 1, 0]
         """
-        return self.init_input_decimal(random.randint(0, self.iMax-1))
+        return self.init_input_decimal(random.randint(0, self.iMax - 1))
 
     # spinlist manipulation:
 
@@ -129,7 +129,7 @@ class SpinConfig():
         >>> myspin.random_flip()
         [0, 1, 0, 0, 1, 0, 1, 0]
         """
-        random_site = random.randint(0, self.N_length-1)
+        random_site = random.randint(0, self.N_length - 1)
         if self.spinlist[random_site] == 0:
             self.spinlist[random_site] = 1
         else:
@@ -161,7 +161,6 @@ class SpinConfig():
                 binary_list2.append(0)
             else:
                 raise TypeError("input_str: input should be a string of - and +.")
-                break
 
         return binary_list2
 
@@ -183,7 +182,7 @@ class SpinConfig():
         >>> mySpin.magnetization()
         -4
         """
-        self.magnet = 2 * self.spinlist.count(1)-self.N_length
+        self.magnet = 2 * self.spinlist.count(1) - self.N_length
 
         return self.magnet
 
@@ -227,7 +226,8 @@ class SpinConfig():
 
     # Observable
     def observable_theory(self, T=10, J=-2, u=1.1):
-        """Calculate oberservables of 1-d Ising model with N_length theoretically under temperature T, wtih external field parameter u and coupling parameter J.
+        """Calculate oberservables of 1-d Ising model with N_length theoretically under temperature T,
+        wtih external field parameter u and coupling parameter J.
         Parameters
         ----------
         T : float, optional
@@ -264,7 +264,7 @@ class SpinConfig():
             self.spinlist = self.init_input_decimal(i_list)
             self.magnetization()
             self.hamiltonian(self.J, self.u)
-            Zi = exp(-self.energy/T)
+            Zi = exp(-self.energy / T)
 
             Zsum += Zi
             E_theory += Zi * self.energy
@@ -273,20 +273,20 @@ class SpinConfig():
             mm_theory += Zi * self.magnet**2
 
         # Normalize over Zsum
-        self.E_theory = E_theory/Zsum
-        EE_theory = EE_theory/Zsum
-        self.m_theory = m_theory/Zsum
-        mm_theory = mm_theory/Zsum
+        self.E_theory = E_theory / Zsum
+        EE_theory = EE_theory / Zsum
+        self.m_theory = m_theory / Zsum
+        mm_theory = mm_theory / Zsum
 
         # get capacity and magnetic susceptibility
-        self.C_theory = (EE_theory - self.E_theory**2)/(T*T)
-        self.ms_theory = (mm_theory - self.m_theory**2)/(T)
+        self.C_theory = (EE_theory - self.E_theory**2) / (T * T)
+        self.ms_theory = (mm_theory - self.m_theory**2) / (T)
 
         return self.E_theory, self.m_theory, self.C_theory, self.ms_theory
 
     def observable_metropolis_sampling(self, T=10, sample_size_M=10000, u=1.1, J=-2):
-        """
-        Simulated averaged energy, magnetization, heat Capacity and magnetic susceptbility of 1-d Monte Carlo of sample_size_M under temperature T.
+        """Simulated averaged energy, magnetization, heat Capacity and magnetic susceptbility
+         of 1-d Monte Carlo of sample_size_M under temperature T.
         Parameters
         ----------
         T : float, optional
@@ -330,7 +330,7 @@ class SpinConfig():
             dE = self.hamiltonian() - E_metro_sample
 
             # decision
-            if dE < 0 or random.random() < exp(-dE/T):
+            if dE < 0 or random.random() < exp(-dE / T):
                 j += 1
                 spin_metro_sample = self.spinlist
                 E_metro_sample = self.energy
@@ -346,9 +346,18 @@ class SpinConfig():
                 self.spinlist = spin_metro_sample
 
         # average to get the simulated observables
-        self.E_metropolis = E_metro_sum/sample_size_M
-        self.m_metropolis = m_metro_sum/sample_size_M
-        self.C_metropolis = (EE_metro_sum/sample_size_M - self.E_metropolis**2)/(T*T)
-        self.ms_metropolis = (mm_metro_sum/sample_size_M - self.m_metropolis**2)/(T)
+        self.E_metropolis = E_metro_sum / sample_size_M
+        self.m_metropolis = m_metro_sum / sample_size_M
+        self.C_metropolis = (EE_metro_sum / sample_size_M - self.E_metropolis**2) / (
+            T * T
+        )
+        self.ms_metropolis = (mm_metro_sum / sample_size_M - self.m_metropolis**2) / (
+            T
+        )
 
-        return self.E_metropolis, self.m_metropolis, self.C_metropolis, self.ms_metropolis
+        return (
+            self.E_metropolis,
+            self.m_metropolis,
+            self.C_metropolis,
+            self.ms_metropolis,
+        )
