@@ -4,6 +4,7 @@
 from .functions import *
 from .spinconfig import SpinConfig
 
+
 # Handle versioneer
 from ._version import get_versions
 versions = get_versions()

@@ -2,7 +2,6 @@
 SpinConfig class and methods for initialization, manipulation and analyzing property
 """
 
-
 from math import exp
 import random
 import numpy as np

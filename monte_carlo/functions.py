@@ -1,4 +1,4 @@
-"""Provide the primary functions."""
+"""Provide the primary functions"""
 
 
 def canvas(with_attribution=True):
