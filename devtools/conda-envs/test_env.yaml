@@ -9,12 +9,17 @@ dependencies:
   - python
   - pip
 
+    # Package dependencies
+  - numpy
+  - random
+  - matplotlib
+
     # Testing
   - pytest
   - pytest-cov
   - codecov
 
     # Pip-only installs
-  #- pip:
-  #  - codecov
+  - pip:
+    - codecov
 
