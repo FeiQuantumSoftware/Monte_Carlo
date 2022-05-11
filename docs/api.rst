@@ -5,3 +5,4 @@ API Documentation
    :toctree: autosummary
 
    monte_carlo.canvas
+   monte_carlo.SpinConfig
