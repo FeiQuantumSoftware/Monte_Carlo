@@ -7,10 +7,7 @@ import sys
 import pytest
 import monte_carlo
 
-from math import exp
-import random
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def test_spinconfig():
