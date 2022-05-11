@@ -55,8 +55,7 @@ class SpinConfig:
                 binary_list = [0] + binary_list
             self.spinlist = binary_list
         else:
-            raise ValueError(f"input decimal({decimal_input}) should not exceed the
-                             possible biggest spinconfig 2**N={self.iMax}. ")
+            raise ValueError(f"input decimal({decimal_input}) should not exceed the possible biggest spinconfig 2**N={self.iMax}. ")
 
         return self.spinlist
 
