@@ -14,11 +14,12 @@ class SpinConfig:
         ----------
         N_length: integer , optional
             Length of the list.
+
         Returns
         -------
-            SpinConfig : class
-        A class of spinlist with length N_length. The total possible spin configurations
-         number is iMax = 2**N_length.
+        SpinConfig : class
+            A class of spinlist with length N_length. The total possible spin configurations number is iMax = 2**N_length.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -34,15 +35,17 @@ class SpinConfig:
     # spinlist initialization
     def init_input_decimal(self, decimal_input):
         """Initialize spin configuration with a decimal input.
+
         Parameters
         ----------
         decimal_Input : integar
             The decimal value of a binary list.
+
         Returns
         -------
         self.spinlist : list
-            A spin list represented by a binary list. 
-            '0' represents: spin down. '1' represents: spin up.
+            A spin list represented by a binary list. '0' represents: spin down. '1' represents: spin up.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -55,13 +58,13 @@ class SpinConfig:
                 binary_list = [0] + binary_list
             self.spinlist = binary_list
         else:
-            raise ValueError(
-                f"input decimal({decimal_input}) should not exceed the possible biggest spinconfig 2**N={self.iMax}. ")
+            raise ValueError(f"input decimal({decimal_input}) exceeds the biggest spinconfig 2**N={self.iMax}. ")
 
         return self.spinlist
 
     def init_rand_spinlist(self):
         """Initialize the spin configuration with random integer in range[0,iMax).
+
         Parameters
         ----------
 
@@ -69,6 +72,7 @@ class SpinConfig:
         -------
         self.spinlist : list
             A binary list of N_length.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -80,6 +84,7 @@ class SpinConfig:
     # spinlist manipulation:
     def random_flip(self):
         """Random flip spin on a random site for a given spinlist.
+
         Parameters
         ----------
 
@@ -87,6 +92,7 @@ class SpinConfig:
         -------
         self.spinlist : list
             A binary spinlist with the spin on a random site flipped.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -105,14 +111,17 @@ class SpinConfig:
 
     def input_str(self, str_input):
         """Translate the string of the input string in '+' and '-' into a binary list.
+
         Parameters
         ----------
         str_input: string
             A spin list represented in string with '+': spin up, and '-': spin down.
+
         Returns
         -------
         spinlist2 : list
             A binary spin list: '0' represents spin down, and '1' represents spin up.
+
         Examples
         --------
         >>> myspin = SpinConfig()
@@ -134,6 +143,7 @@ class SpinConfig:
     # spinlist properties:
     def magnetization(self):
         """Calculate the magnetization of the spinlist.
+
         Parameters
         ----------
 
@@ -141,6 +151,7 @@ class SpinConfig:
         -------
         magnet: integer
             magnetization of the spinlist
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -154,6 +165,7 @@ class SpinConfig:
 
     def hamiltonian(self, J=-2, u=1.1):
         """Calculate the energy of the given spinlist.
+
         Parameters
         ----------
         J: float, optional
@@ -165,6 +177,7 @@ class SpinConfig:
         -------
         energy : float
             Total energy from external field and the coupling between the nearest neighbors.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -194,6 +207,7 @@ class SpinConfig:
     def observable_theory(self, T=10, J=-2, u=1.1):
         """Calculate oberservables of 1-d Ising model with N_length theoretically
          under temperature T, wtih external field parameter u and coupling parameter J.
+
         Parameters
         ----------
         T : float, optional
@@ -202,10 +216,12 @@ class SpinConfig:
             Coupling parameter, default J=-2 .
         u: float, optional
             External field strength, default u=1.1 .
+
         Returns
         -------
         E, m, C, ms : set
             Expectation of energy, average magnetism, heat capacibility, magnetic susceptbility.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -254,6 +270,7 @@ class SpinConfig:
         """
         Simulated averaged energy, magnetization, heat Capacity and magnetic susceptbility
          of 1-d Monte Carlo of sample_size_M under temperature T.
+
         Parameters
         ----------
         T : float, optional
@@ -264,10 +281,12 @@ class SpinConfig:
             External field strength, default u=1.1
         J: float, optional
             Coupling parameter, default J=-2
+
         Returns
         -------
         E, m, C, ms : set
             Average energy, average magnetism, heat capacibility, magnetic susceptbility.
+
         Examples
         --------
         >>> myspin = SpinConfig(8)
