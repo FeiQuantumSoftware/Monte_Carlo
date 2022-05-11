@@ -44,10 +44,7 @@ def test_spinconfig():
     assert expected_N_length == calculated_N_length
     assert expected_iMax == calculated_iMax
     assert expected_init_input_decimal == calculated_init_input_decimal
-
     assert expected_magnetization == calculated_magnetization
     assert expected_hamiltonian == calculated_hamiltonian
-
     assert expected_observable_theory == test_spin_observable_theory
-
     assert expected_input_str == calculated_input_str
