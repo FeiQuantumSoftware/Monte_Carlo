@@ -5,6 +5,10 @@
 
 Welcome to monte_carlo's documentation!
 =========================================================
+molecool is a Python package designed to read in, perform analysis, 
+and visualize molecular coordinates. The file formats `xyz` and `pdb` are 
+currently supported.
+
 
 .. toctree::
    :maxdepth: 2
