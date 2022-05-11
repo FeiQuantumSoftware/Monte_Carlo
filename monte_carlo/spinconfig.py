@@ -2,12 +2,10 @@
 SpinConfig class and methods for initialization, manipulation and analyzing property
 """
 
-from math import exp
-import random
 import numpy as np
-import matplotlib.pyplot as plt
 
 
+# def spin configuration class
 class SpinConfig:
     def __init__(self, N_length=10):
         """Create a class of 1-d Ising model, with length of the spinlist as N_length.
@@ -19,7 +17,8 @@ class SpinConfig:
         Returns
         -------
             SpinConfig : class
-        A class of spinlist with N_length. The total possible spin configurations: iMax = 2 ** N_length.
+        A class of spinlist with length N_length. The total possible spin configurations
+         number is iMax = 2**N_length.
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -42,7 +41,8 @@ class SpinConfig:
         Returns
         -------
         self.spinlist : list
-            A spin list represented by a binary list. '0' represents: spin down. '1' represents: spin up.
+            A spin list represented by a binary list. 
+            '0' represents: spin down. '1' represents: spin up.
         Examples
         --------
         >>> myspin = SpinConfig(8)
@@ -55,9 +55,8 @@ class SpinConfig:
                 binary_list = [0] + binary_list
             self.spinlist = binary_list
         else:
-            raise ValueError(
-                f"input decimal ({decimal_input}) should not exceed the biggest possible number 2**N= {self.iMax}. "
-            )
+            raise ValueError(f"input decimal({decimal_input}) should not exceed the
+                             possible biggest spinconfig 2**N={self.iMax}. ")
 
         return self.spinlist
 
@@ -76,7 +75,7 @@ class SpinConfig:
         >>> myspin.init_rand_spinlist()
         [0, 1, 1, 0, 1, 0, 1, 0]
         """
-        return self.init_input_decimal(random.randint(0, self.iMax - 1))
+        return self.init_input_decimal(np.random.randint(0, self.iMax - 1))
 
     # spinlist manipulation:
     def random_flip(self):
@@ -96,7 +95,7 @@ class SpinConfig:
         >>> myspin.random_flip()
         [0, 1, 0, 0, 1, 0, 1, 0]
         """
-        random_site = random.randint(0, self.N_length - 1)
+        random_site = np.random.randint(0, self.N_length - 1)
         if self.spinlist[random_site] == 0:
             self.spinlist[random_site] = 1
         else:
@@ -128,6 +127,7 @@ class SpinConfig:
                 binary_list2.append(0)
             else:
                 raise TypeError("input_str: input should be a string of - and +.")
+                break
 
         return binary_list2
 
@@ -192,8 +192,8 @@ class SpinConfig:
 
     # Observable
     def observable_theory(self, T=10, J=-2, u=1.1):
-        """Calculate oberservables of 1-d Ising model with N_length theoretically under temperature T,
-        wtih external field parameter u and coupling parameter J.
+        """Calculate oberservables of 1-d Ising model with N_length theoretically
+         under temperature T, wtih external field parameter u and coupling parameter J.
         Parameters
         ----------
         T : float, optional
@@ -230,7 +230,7 @@ class SpinConfig:
             self.spinlist = self.init_input_decimal(i_list)
             self.magnetization()
             self.hamiltonian(self.J, self.u)
-            Zi = exp(-self.energy / T)
+            Zi = np.exp(-self.energy / T)
 
             Zsum += Zi
             E_theory += Zi * self.energy
@@ -251,7 +251,8 @@ class SpinConfig:
         return self.E_theory, self.m_theory, self.C_theory, self.ms_theory
 
     def observable_metropolis_sampling(self, T=10, sample_size_M=10000, u=1.1, J=-2):
-        """Simulated averaged energy, magnetization, heat Capacity and magnetic susceptbility
+        """
+        Simulated averaged energy, magnetization, heat Capacity and magnetic susceptbility
          of 1-d Monte Carlo of sample_size_M under temperature T.
         Parameters
         ----------
@@ -296,7 +297,7 @@ class SpinConfig:
             dE = self.hamiltonian() - E_metro_sample
 
             # decision
-            if dE < 0 or random.random() < exp(-dE / T):
+            if dE < 0 or np.random.random() < np.exp(-dE / T):
                 j += 1
                 spin_metro_sample = self.spinlist
                 E_metro_sample = self.energy
