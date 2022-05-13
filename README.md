@@ -10,6 +10,7 @@ Introduction to Monte_Carlo method
 
 Study Ising Model and metroplis sampling.
 
+How to use Documentation and tutorial: [here](https://monte-carlo-feiquantumsoftware.readthedocs.io/en/latest/)
 
 ### Copyright
 
