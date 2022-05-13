@@ -12,6 +12,18 @@ Study Ising Model and metroplis sampling.
 
 How to use Documentation and tutorial: [here](https://monte-carlo-feiquantumsoftware.readthedocs.io/en/latest/)
 
+
+
+### Installation
+
+To install monte_carlo, you will need an environment with the following packages:
+
+* Python 3.9
+* NumPy
+
+For development purpose, once you have these packages installed, you can install the monte_carlo in the same environment using :
+ pip install -e .
+
 ### Copyright
 
 Copyright (c) 2022, Fei_Zhuang
