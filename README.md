@@ -22,6 +22,7 @@ To install monte_carlo, you will need an environment with the following packages
 * NumPy
 
 For development purpose, once you have these packages installed, you can install the monte_carlo in the same environment using :
+
  pip install -e .
 
 ### Copyright
