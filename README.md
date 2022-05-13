@@ -27,7 +27,7 @@ For development purpose, once you have these packages installed, you can install
 
 
 <!-- USAGE EXAMPLES -->
-## Example
+### Use and Example
 
 
    ```sh
@@ -44,8 +44,6 @@ For development purpose, once you have these packages installed, you can install
 
  
 How to use Documentation and tutorial: [here](https://monte-carlo-feiquantumsoftware.readthedocs.io/en/latest/)
-
-
 
 <!-- ROADMAP -->
 
