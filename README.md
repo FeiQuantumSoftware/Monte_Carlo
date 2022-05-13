@@ -2,7 +2,7 @@ monte_carlo
 ==============================
 [//]: # (Badges)
 [![GitHub Actions Build Status](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/monte_carlo/workflows/CI/badge.svg)](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/monte_carlo/actions?query=workflow%3ACI)
-[![codecov](https://app.codecov.io/gh/FeiQuantumSoftware/Monte_Carlo)
+[![codecov](https://codecov.io/gh/FeiQuantumSoftware/Monte_Carlo/commit/5941e927d2e5f732af2d63403d6176b5ffd709b1/)
 
 
 Introduction to Monte_Carlo method
