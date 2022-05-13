@@ -15,7 +15,9 @@ and derive sampled observables of an Ising model.
    :caption: Contents:
 
    getting_started
+   monte_carlo_method
    api
+   developer_instruction
 
 
 

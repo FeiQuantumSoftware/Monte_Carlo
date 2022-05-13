@@ -11,24 +11,12 @@ To install monte_carlo, you will need an environment with the following packages
 * Python 3.9
 * NumPy 
 
-Once you have these packages installed, you can install molecool in the same environment using 
-:: 
 
-    pip install -e .
 
 
 SpinConfig
 ----------
 Once installed, you can use the package. This example shows how to initialize a spinlist.
-::
-
-    import monte_carlo
-
-    example_spinlist = molecool.SpinConfig(8)
-    example_spinlist.init_decimal_input(10) = [0, 0, 0, 0, 1, 0, 1, 0]
-
-
-----------
 ::
     class SpinConfig:
     def __init__(self, N_length=10):
