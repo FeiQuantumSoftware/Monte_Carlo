@@ -5,9 +5,9 @@
 
 Welcome to monte_carlo's documentation!
 =========================================================
-molecool is a Python package designed to read in, perform analysis, 
-and visualize molecular coordinates. The file formats `xyz` and `pdb` are 
-currently supported.
+monte_carlo is a Python package designed to represent, perform analysis, derive expected observables, 
+and derive sampled observables of an Ising model. 
+
 
 
 .. toctree::
@@ -16,6 +16,7 @@ currently supported.
 
    getting_started
    api
+
 
 
 

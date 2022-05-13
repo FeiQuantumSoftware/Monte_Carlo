@@ -5,7 +5,8 @@ dependencies:
   - python
   - pip
 
-
+    # Package depends
+  - numpy
 
     # Pip-only installs
   #- pip:
