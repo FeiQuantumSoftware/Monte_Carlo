@@ -27,13 +27,20 @@ For development purpose, once you have these packages installed, you can install
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Example
 
 
    ```sh
-   pip install -e .
+   import monte_carlo as mc
+   
+   example_spin = mc.SpinConfig(8)
+   example_spin.init_input_decimal(10)
+   example_spin.magnetization()
    ```
-
+   
+   ```sh
+   -4
+   ```
 
  
 How to use Documentation and tutorial: [here](https://monte-carlo-feiquantumsoftware.readthedocs.io/en/latest/)
